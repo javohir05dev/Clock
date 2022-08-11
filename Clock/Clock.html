@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, hsl(200, 100%, 50%), hsl(175, 100%, 50%));
+    min-height: 100vh;
+}
+
+.clock {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 50%;
+    position: relative;
+    border: 2px solid black;
+    transform: scale(1.5);
+}
+
+.number,
+.mls {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.mls {
+    opacity: 0.8;
+    padding: 0;
+    border-radius: 0;
+    font-size: 10px;
+}
+
+span {
+    display: inline-block;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+.hand {
+    width: 10px;
+    height: 37%;
+    background-color: black;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+}
+
+.hand.second {
+    background-color: red;
+    z-index: 10;
+    width: 5px;
+}
+
+.hand.minute {
+    z-index: 9;
+    width: 7px;
+}
+
+.hand.second::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: inherit;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    left: -7px;
+    z-index: 100;
+}
+
+.hand.second::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: 50px;
+    bottom: -50px;
+    background-color: inherit;
+}
+
+@media (max-width:576px) {
+    .clock{
+        width: 360px;
+        height: 360px;
+        transform: scale(0.7);
+    }
+    span{
+        font-size: 40px;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hand second"></div>
+        <div class="hand minute"></div>
+        <div class="hand hour"></div>
+        <div class="dot"></div>
+
+        <div class="number number1"><span>1</span></div>
+        <div class="number number2"><span>2</span></div>
+        <div class="number number3"><span>3</span></div>
+        <div class="number number4"><span>4</span></div>
+        <div class="number number5"><span>5</span></div>
+        <div class="number number6"><span>6</span></div>
+        <div class="number number7"><span>7</span></div>
+        <div class="number number8"><span>8</span></div>
+        <div class="number number9"><span>9</span></div>
+        <div class="number number10"><span>10</span></div>
+        <div class="number number11"><span>11</span></div>
+        <div class="number number12"><span>12</span></div>
+
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+        <div class="mls">|</div>
+
+        <script>
+            let numbers = document.querySelectorAll('.number');
+let spans = document.querySelectorAll('.number span');
+let deg = 30;
+
+for (let i = 0; i < numbers.length; i++) {
+    numbers[i].style.transform = `rotate(${deg}deg)`;
+    spans[i].style.transform = `rotate(-${deg}deg)`;
+    deg += 30;
+}
+
+let mlsDeg = 6;
+let milliseconds = document.querySelectorAll('.mls');
+
+for (const mls of milliseconds) {
+    mls.style.transform = `rotate(${mlsDeg}deg)`;
+    mlsDeg+=6
+}
+
+let secondHand = document.querySelector('.second');
+let minuteHand = document.querySelector('.minute');
+let hourHand = document.querySelector('.hour');
+
+function time() {
+    let date = new Date();
+    let second = date.getSeconds();
+    let minute = date.getMinutes();
+    let hour = date.getHours();
+    secondHand.style.transform = `rotate(${second * 6}deg)`;
+    minuteHand.style.transform = `rotate(${minute * 6}deg)`;
+    hourHand.style.transform = `rotate(${(hour * 30) + (minute / 12)}deg)`;
+}
+setInterval(() => {
+    time()
+}, 1000);
+        </script>
+</body>
+
+</html>
